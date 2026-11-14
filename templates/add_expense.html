@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Charity Funds Management System</h1>
+    <p>Admin - Record Campaign Expense</p>
+</header>
+
+<section class="hero">
+    <h2>Add New Expense</h2>
+
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+
+        <p>Select Campaign</p>
+        <select name="campaign_id" required>
+            {% for campaign in campaigns %}
+                <option value="{{ campaign[0] }}">
+                    {{ campaign[1] }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <p>Expense Description</p>
+        <input type="text" name="description"
+               placeholder="Enter expense details" required>
+
+        <p>Expense Amount (₹)</p>
+        <input type="number" name="amount"
+               min="0.01" step="0.01"
+               placeholder="Enter amount" required>
+
+        <button type="submit" class="btn">Save Expense</button>
+    </form>
+
+    <p><a href="/admin-dashboard">Back to Admin Dashboard</a></p>
+</section>
+
+<footer>
+    <p>© 2026 Charity Funds Management System</p>
+</footer>
+
+</body>
+</html>
