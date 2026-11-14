@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Charity Funds Management System</h1>
+    <p>Donor Dashboard</p>
+</header>
+
+<section class="hero">
+    <h2>Welcome, {{ session['name'] }}!</h2>
+
+    <p>Thank you for being part of our charity community.</p>
+
+    <h2>Available Charity Campaigns</h2>
+    <p>
+    <a href="/donate" class="btn">Make a Donation</a>
+</p>
+<p>
+    <a href="/donation-history" class="btn">
+        View Donation History
+    </a>
+</p>
+
+    {% for campaign in campaigns %}
+        <div>
+            <h3>{{ campaign.campaign_name }}</h3>
+            <p>{{ campaign.description }}</p>
+            <p>Target Amount: ₹{{ campaign.target_amount }}</p>
+            <p>Status: {{ campaign.status }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <br>
+    <a href="/logout" class="btn">Logout</a>
+</section>
+
+<footer>
+    <p>© 2026 Charity Funds Management System</p>
+</footer>
+
+</body>
+</html>
