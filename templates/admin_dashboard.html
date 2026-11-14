@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Charity Funds Management System</h1>
+    <p>Administrator Dashboard</p>
+</header>
+
+<section class="hero">
+
+    <h2>Welcome, {{ session['name'] }}!</h2>
+    <p>Manage your charity activities from here.</p>
+
+    <h2>System Overview</h2>
+
+    <div>
+        <h3>Total Registered Users</h3>
+        <h2>{{ total_users }}</h2>
+    </div>
+
+    <div>
+        <h3>Total Campaigns</h3>
+        <h2>{{ total_campaigns }}</h2>
+    </div>
+
+    <div>
+        <h3>Total Donations</h3>
+        <h2>{{ total_donations }}</h2>
+    </div>
+
+    <div>
+        <h3>Total Donation Amount</h3>
+        <h2>₹{{ total_amount }}</h2>
+    </div>
+
+<p>
+    <a href="/add-campaign" class="btn">+ Add New Campaign</a>
+</p>
+<p>
+    <a href="/add-expense" class="btn">+ Add Campaign Expense</a>
+</p>
+<p>
+    <a href="/expense-history" class="btn">View Expense History</a>
+</p>
+    <h2>Campaign Details</h2>
+
+    {% for campaign in campaigns %}
+        <div>
+            <h3>{{ campaign.campaign_name }}</h3>
+            <p>{{ campaign.description }}</p>
+            <p>Target: ₹{{ campaign.target_amount }}</p>
+            <p>Status: {{ campaign.status }}</p>
+        </div>
+    {% endfor %}
+
+    <a href="/dashboard" class="btn">Donor Dashboard</a>
+    <a href="/logout" class="btn">Logout</a>
+
+</section>
+
+<footer>
+    <p>© 2026 Charity Funds Management System</p>
+</footer>
+
+</body>
+</html>
