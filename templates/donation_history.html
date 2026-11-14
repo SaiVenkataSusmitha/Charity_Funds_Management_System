@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Charity Funds Management System</h1>
+    <p>My Donation History</p>
+</header>
+
+<section class="hero">
+    <h2>Previous Donations</h2>
+
+    {% if donations %}
+        {% for donation in donations %}
+            <h3>{{ donation.campaign_name }}</h3>
+            <p>Amount: ₹{{ donation.amount }}</p>
+            <p>Date: {{ donation.donation_date }}</p>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>You have not made any donations yet.</p>
+    {% endif %}
+
+    <a href="/dashboard">Back to Dashboard</a>
+</section>
+
+<footer>
+    <p>© 2026 Charity Funds Management System</p>
+</footer>
+
+</body>
+</html>
