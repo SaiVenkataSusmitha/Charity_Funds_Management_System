@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Charity Funds Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Charity Funds Management System</h1>
+    <p>Join Us and Make a Difference!</p>
+</header>
+
+<section class="hero">
+    <h2>Create Account</h2>
+
+    <form method="POST" action="/register">
+        <p>Full Name</p>
+        <input type="text" name="name" placeholder="Enter your name" required>
+
+        <p>Email Address</p>
+        <input type="email" name="email" placeholder="Enter your email" required>
+
+        <p>Password</p>
+        <input type="password" name="password" placeholder="Create a password" required>
+
+        <br><br>
+        <button type="submit" class="btn">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="/login">Login here</a></p>
+</section>
+
+<footer>
+    <p>© 2026 Charity Funds Management System</p>
+</footer>
+
+</body>
+</html>
