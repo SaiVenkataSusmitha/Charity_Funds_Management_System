@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Donation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Charity Funds Management System</h1>
+    <p>Support a Campaign</p>
+</header>
+
+<section class="hero">
+    <h2>Make a Donation</h2>
+
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST" action="/donate">
+
+        <p>Select Campaign</p>
+        <select name="campaign_id" required>
+            {% for campaign in campaigns %}
+                <option value="{{ campaign.campaign_id }}">
+                    {{ campaign.campaign_name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <p>Donation Amount (₹)</p>
+        <input type="number" name="amount"
+               placeholder="Enter donation amount"
+               min="1" step="0.01" required>
+
+        <br><br>
+        <button type="submit" class="btn">Donate Now</button>
+    </form>
+
+    <p><a href="/dashboard">Back to Dashboard</a></p>
+</section>
+
+<footer>
+    <p>© 2026 Charity Funds Management System</p>
+</footer>
+
+</body>
+</html>
